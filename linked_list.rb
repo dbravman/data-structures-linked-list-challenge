@@ -34,4 +34,40 @@ class LinkedList
     end
     current.remove_after
   end
+
+  def get(index)
+    current = @first_node 
+    index.times do
+      current = current.next
+    end
+    current.value
+  end
+
+  def set(index, element)
+    current = @first_node 
+    index.times do
+      current = current.next
+    end
+    current.value = element
+  end
+
+  def insert(index, element)
+    new_node = Node.new(element)
+    current = @first_node 
+    index.times do
+      current = current.next
+    end
+    new_node.insert_after(current.next)
+    current.insert_after(new_node)    
+  end
+
+  def size
+    current = @first_node
+    count = 0
+    until current.next == nil
+      count += 1
+      current = @first_node.next
+    end
+    count
+  end
 end
