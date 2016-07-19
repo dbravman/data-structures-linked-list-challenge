@@ -11,7 +11,7 @@ class LinkedList
 
   def insert_first(element)
     new_node = Node.new(element)
-    @last_node = new_node if @last_node = nil 
+    @last_node = new_node if @last_node == nil 
     new_node.insert_before(@first_node)
     @first_node = new_node 
   end
@@ -19,11 +19,16 @@ class LinkedList
   def remove_first
     return nil if @first_node == nil
     @first_node = @first_node.next
+    if @first_node != nil
+      @first_node.previous = nil
+    else
+      @last_node = nil
+    end
   end
 
-  def insert_last
+  def insert_last(element)
     new_node = Node.new(element)
-    @first_node = new_node if @first_node = nil 
+    @first_node = new_node if @first_node == nil 
     new_node.insert_after(@last_node)
     @last_node = new_node 
   end
@@ -31,6 +36,11 @@ class LinkedList
   def remove_last
     return nil if @last_node == nil
     @last_node = @last_node.previous
+    if @last_node != nil
+      @last_node.next = nil
+    else
+      @first_node = nil
+    end
   end
 
   def get(index)

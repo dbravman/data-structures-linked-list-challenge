@@ -31,6 +31,7 @@ describe LinkedList do
       list.insert_first(0)
       list.remove_first
       expect(list.first_node).to be(nil)
+      expect(list.last_node).to be(nil)
     end  
 
     it "returns nil if empty list" do
@@ -63,10 +64,11 @@ describe LinkedList do
       expect(list.first_node.next).to be(nil)
     end
 
-    it "removes the first from a single-element list" do
+    it "removes the last from a single-element list" do
       list.insert_first(0)
       list.remove_last
       expect(list.first_node).to be(nil)
+      expect(list.last_node).to be(nil)
     end
 
     it "returns nil if empty list" do
