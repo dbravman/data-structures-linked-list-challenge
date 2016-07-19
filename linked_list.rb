@@ -2,16 +2,18 @@ require_relative 'node'
 
 class LinkedList
 
-  attr_reader :first_node #for testing only
+  attr_reader :first_node, :last_node #for testing only
 
   def initialize
     @first_node = nil
+    @last_node = nil
   end
 
   def insert_first(element)
     new_node = Node.new(element)
-    new_node.insert_after(@first_node)
-    @first_node = new_node  
+    @last_node = new_node if @last_node = nil 
+    new_node.insert_before(@first_node)
+    @first_node = new_node 
   end
 
   def remove_first
@@ -19,31 +21,43 @@ class LinkedList
     @first_node = @first_node.next
   end
 
-  def insert_last(element)
-    if @first_node == nil
-      insert_first(element)
-    else
-      new_node = Node.new(element)
-      current = @first_node 
-      until current.next == nil
-        current = @first_node.next
-      end
-      current.insert_after(new_node)
-    end
+  # def insert_last(element)
+  #   if @first_node == nil
+  #     insert_first(element)
+  #   else
+  #     new_node = Node.new(element)
+  #     current = @first_node 
+  #     until current.next == nil
+  #       current = @first_node.next
+  #     end
+  #     current.insert_after(new_node)
+  #   end
+  # end
+
+  def insert_last
+    new_node = Node.new(element)
+    @first_node = new_node if @first_node = nil 
+    new_node.insert_before(@last_node)
+    @last_node = new_node 
   end
 
   def remove_last
-    return nil if @first_node == nil
-    if @first_node.next == nil
-      remove_first
-    else
-      current = @first_node
-      until current.next.next == nil
-        current = current.next
-      end
-      current.remove_after
-    end
+    return nil if @last_node == nil
+    @last_node = @last_node.previous
   end
+
+  # def remove_last
+  #   return nil if @first_node == nil
+  #   if @first_node.next == nil
+  #     remove_first
+  #   else
+  #     current = @first_node
+  #     until current.next.next == nil
+  #       current = current.next
+  #     end
+  #     current.remove_after
+  #   end
+  # end
 
   def get(index)
     current = @first_node 
