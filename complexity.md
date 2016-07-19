@@ -1,0 +1,18 @@
+* LinkedList#new 
+ * O(1)
+* LinkedList#insert_first(element) 
+ * O(1)
+* LinkedList#remove_first(element) 
+ * O(1)
+* LinkedList#insert_last(element) 
+ * O(1)
+* LinkedList#remove_last(element) 
+ * O(1)
+* LinkedList#get(index) 
+ * O(n)
+* LinkedList#set(index, element) 
+ * O(n)
+* LinkedList#insert(index, element) 
+ * O(n)
+* LinkedList#size 
+ * O(1)
