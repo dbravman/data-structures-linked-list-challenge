@@ -2,6 +2,8 @@ require_relative 'node'
 
 class LinkedList
 
+  attr_reader :first_node #for testing only
+
   def initialize
     @first_node = nil
   end
@@ -64,9 +66,9 @@ class LinkedList
   def size
     current = @first_node
     count = 0
-    until current.next == nil
+    until current == nil
       count += 1
-      current = @first_node.next
+      current = current.next
     end
     count
   end
