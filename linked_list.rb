@@ -34,11 +34,15 @@ class LinkedList
 
   def remove_last
     return nil if @first_node == nil
-    current = @first_node
-    until current.next.next == nil
-      current = @first_node.next
+    if @first_node.next == nil
+      remove_first
+    else
+      current = @first_node
+      until current.next.next == nil
+        current = current.next
+      end
+      current.remove_after
     end
-    current.remove_after
   end
 
   def get(index)
