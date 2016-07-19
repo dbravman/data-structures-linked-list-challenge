@@ -20,12 +20,16 @@ class LinkedList
   end
 
   def insert_last(element)
-    new_node = Node.new(element)
-    current = @first_node 
-    until current.next == nil
-      current = @first_node.next
+    if @first_node == nil
+      insert_first(element)
+    else
+      new_node = Node.new(element)
+      current = @first_node 
+      until current.next == nil
+        current = @first_node.next
+      end
+      current.insert_after(new_node)
     end
-    current.insert_after(new_node)
   end
 
   def remove_last

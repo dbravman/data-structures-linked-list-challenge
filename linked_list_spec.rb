@@ -6,7 +6,6 @@ describe LinkedList do
   describe "has insert_first" do
     it "inserts to an empty list" do
       list.insert_first(0)
-      list.first_node
       expect(list.first_node.value).to eq(0)
       expect(list.first_node.next).to be(nil)
     end
@@ -37,6 +36,22 @@ describe LinkedList do
     it "returns nil if empty list" do
       list.remove_first
       expect(list.remove_first).to be(nil)
+    end
+  end
+
+  describe "has insert last" do
+    it "inserts to an empty list" do
+      list.insert_last(0)
+      p list
+      expect(list.first_node.value).to eq(0)
+      expect(list.first_node.next).to be(nil)
+    end
+
+    it "inserts to a non-empty list" do
+      list.insert_first(0)
+      list.insert_last(1)
+      expect(list.first_node.next.value).to eq(1)
+      expect(list.first_node.next.next).to be(nil)
     end
   end
 end
