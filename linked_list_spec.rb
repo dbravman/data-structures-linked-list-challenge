@@ -101,5 +101,16 @@ describe LinkedList do
     end
   end
 
-  
+  describe "has size" do
+    it "for non-empty list" do
+      list.insert_last(1)
+      list.insert_last(2)
+      list.insert_last(3)
+      expect(list.size).to eq(3)
+    end
+
+    it "for empty list" do
+      expect(list.size).to eq(0)
+    end
+  end
 end
