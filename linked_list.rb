@@ -2,18 +2,21 @@ require_relative 'node'
 
 class LinkedList
 
-  attr_reader :first_node, :last_node #for testing only
+  attr_reader :size, :first_node, :last_node #for testing only
+
 
   def initialize
     @first_node = nil
     @last_node = nil
+    @size = 0
   end
 
   def insert_first(element)
     new_node = Node.new(element)
     @last_node = new_node if @last_node == nil 
     new_node.insert_before(@first_node)
-    @first_node = new_node 
+    @first_node = new_node
+    @size += 1 
   end
 
   def remove_first
@@ -24,13 +27,15 @@ class LinkedList
     else
       @last_node = nil
     end
+    @size -= 1
   end
 
   def insert_last(element)
     new_node = Node.new(element)
     @first_node = new_node if @first_node == nil 
     new_node.insert_after(@last_node)
-    @last_node = new_node 
+    @last_node = new_node
+    @size += 1 
   end
 
   def remove_last
@@ -41,6 +46,7 @@ class LinkedList
     else
       @first_node = nil
     end
+    @size -= 1
   end
 
   def get(index)
@@ -72,15 +78,6 @@ class LinkedList
     elsif index == size
       @last_node = new_node
     end
-  end
-
-  def size
-    current = @first_node
-    count = 0
-    until current == nil
-      count += 1
-      current = current.next
-    end
-    count
+    @size += 1
   end
 end
