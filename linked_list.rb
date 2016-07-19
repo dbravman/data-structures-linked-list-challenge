@@ -21,23 +21,10 @@ class LinkedList
     @first_node = @first_node.next
   end
 
-  # def insert_last(element)
-  #   if @first_node == nil
-  #     insert_first(element)
-  #   else
-  #     new_node = Node.new(element)
-  #     current = @first_node 
-  #     until current.next == nil
-  #       current = @first_node.next
-  #     end
-  #     current.insert_after(new_node)
-  #   end
-  # end
-
   def insert_last
     new_node = Node.new(element)
     @first_node = new_node if @first_node = nil 
-    new_node.insert_before(@last_node)
+    new_node.insert_after(@last_node)
     @last_node = new_node 
   end
 
@@ -45,19 +32,6 @@ class LinkedList
     return nil if @last_node == nil
     @last_node = @last_node.previous
   end
-
-  # def remove_last
-  #   return nil if @first_node == nil
-  #   if @first_node.next == nil
-  #     remove_first
-  #   else
-  #     current = @first_node
-  #     until current.next.next == nil
-  #       current = current.next
-  #     end
-  #     current.remove_after
-  #   end
-  # end
 
   def get(index)
     current = @first_node 
@@ -81,8 +55,13 @@ class LinkedList
     index.times do
       current = current.next
     end
-    new_node.insert_after(current.next)
-    current.insert_after(new_node)    
+    new_node.insert_before(current)
+    
+    if index == 0
+      @first_node = new_node
+    elsif index == size
+      @last_node = new_node
+    end
   end
 
   def size
