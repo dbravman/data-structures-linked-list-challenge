@@ -5,9 +5,9 @@
 * LinkedList#remove_first(element) 
  * O(1)
 * LinkedList#insert_last(element) 
- * O(n)
+ * O(1)
 * LinkedList#remove_last(element) 
- * O(n)
+ * O(1)
 * LinkedList#get(index) 
  * O(n)
 * LinkedList#set(index, element) 
@@ -15,4 +15,4 @@
 * LinkedList#insert(index, element) 
  * O(n)
 * LinkedList#size 
- * O(n)
+ * O(1)
