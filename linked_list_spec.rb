@@ -73,4 +73,33 @@ describe LinkedList do
       expect(list.remove_last).to be(nil)
     end
   end
+
+  describe "has get" do
+    it "gets value for an index" do
+      list.insert_last(0)
+      list.insert_last(1)
+      list.insert_last(2)
+      expect(list.get(0)).to eq(0)
+      expect(list.get(1)).to eq(1)
+      expect(list.get(2)).to eq(2)
+    end
+
+    xit "throws error for bad index" do
+      expect{list.get(0)}.to raise_error
+    end
+  end
+
+  describe "has set" do
+    it "sets value for an index" do
+      list.insert_last("test")
+      list.set(0,"new")
+      expect(list.get(0)).to eq("new")
+    end
+
+    xit "throws error for bad index" do
+      expect{list.set(0,"new")}.to raise_error
+    end
+  end
+
+  
 end
